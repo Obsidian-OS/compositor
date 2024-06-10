@@ -6,6 +6,7 @@ mod grabs;
 mod input;
 mod state;
 mod winit;
+mod drm;
 
 use smithay::{
     reexports::calloop::EventLoop,
@@ -37,8 +38,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         state,
         display_handle,
     };
-
-    crate::winit::init_winit(&mut event_loop, &mut data)?;
+    
+    match std::env::var("WAYLAND_BACKEND") {
+        Ok("WINIT") => crate::winit::init_winit(&mut event_loop, &mut data)?,
+        Ok("DRM") => crate::drm::init_drm(&mut event_loop, &mut data)?,
+        _ => crate::drm::init_drm(&mut event_loop, &mut data)?,
+    }
 
     // Launch Obsidian here
 
