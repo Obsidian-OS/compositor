@@ -40,8 +40,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     };
     
     match std::env::var("WAYLAND_BACKEND") {
-        Ok("WINIT") => crate::winit::init_winit(&mut event_loop, &mut data)?,
-        Ok("DRM") => crate::drm::init_drm(&mut event_loop, &mut data)?,
+        Ok(backend) if backend.eq("WINIT") => crate::winit::init_winit(&mut event_loop, &mut data)?,
+        Ok(backend) if backend.eq("DRM") => crate::drm::init_drm(&mut event_loop, &mut data)?,
         _ => crate::drm::init_drm(&mut event_loop, &mut data)?,
     }
 

@@ -10,4 +10,9 @@ smithay = { git = "https://github.com/Smithay/smithay.git", features = [
     "desktop",
     "backend_winit",
     "wayland_frontend",
+    "backend_session",
+    "backend_session_libseat",
+    "backend_udev",
+    "backend_libinput",
+    "backend_drm"
 ], default-features = false }
