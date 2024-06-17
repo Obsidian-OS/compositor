@@ -1,4 +1,4 @@
-backend_session_libseat# Obsidian-OS Compositor
+# Obsidian-OS Compositor
 
 A compositor is a piece of software which routes inputs to windows, and displays window contens on a screen. This is achieved using a Client/Server model which follows the [Wayland](https://wayland.freedesktop.org/) protocol. A compositor is a program which implements Wayland.
 
